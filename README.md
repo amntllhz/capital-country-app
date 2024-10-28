@@ -1,6 +1,6 @@
 # Capital Country App
 
-A simple flutter app
+A simple flutter app, This application contains data on country names and capital cities of various countries in the world which are separated by continent in ascending order
 
 This application development was my mid-semester exam assignment in semester 5 with the following requirements
 
