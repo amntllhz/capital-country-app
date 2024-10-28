@@ -1,6 +1,14 @@
-# myapp
+# Capital Country App
 
-A new Flutter project.
+A simple flutter app
+
+This application development was my mid-semester exam assignment in semester 5 with the following requirements
+
+- Have a good UI appearance, don't be the same as each other
+- Can perform routing or navigation between pages and send data
+- Able to get data from the API (optional if done for better value, if not then just focus on application functionality, for example the application is used to view recipes,   etc.)
+- Collected in rar or zip form With name format: nim_nama_uts.rar
+- Collected in the exam application
 
 ## Getting Started
 
