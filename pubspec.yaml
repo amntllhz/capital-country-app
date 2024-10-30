@@ -63,7 +63,7 @@ flutter:
       fonts:
         - asset: fonts/Inter.ttc
         - asset: fonts/InterVariable.ttf
-        - asset: fonts/InterVariable-italic.ttf
+        - asset: fonts/InterVariable-Italic.ttf
           style: italic
   assets:
     - assets/backg.jpg

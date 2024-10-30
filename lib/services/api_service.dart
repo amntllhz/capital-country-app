@@ -8,16 +8,8 @@ class ApiService {
         await http.get(Uri.parse('https://restcountries.com/v3.1/all'));
 
     if (response.statusCode == 200) {
-      final List<dynamic> jsonResponse = json.decode(response.body);
-      return jsonResponse
-          .map((country) => Country(
-                name: country['name']['common'],
-                capital:
-                    country['capital'] != null ? country['capital'][0] : 'N/A',
-                region: country['region'],
-                flagUrl: country['flags']['png'],
-              ))
-          .toList();
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((data) => Country.fromJson(data)).toList();
     } else {
       throw Exception('Failed to load countries');
     }

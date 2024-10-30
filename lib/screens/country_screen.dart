@@ -5,13 +5,13 @@ import '../services/api_service.dart';
 class CountryScreen extends StatefulWidget {
   final String continent;
 
-  CountryScreen({required this.continent});
+  const CountryScreen({super.key, required this.continent});
 
   @override
-  _CountryScreenState createState() => _CountryScreenState();
+  CountryScreenState createState() => CountryScreenState();
 }
 
-class _CountryScreenState extends State<CountryScreen> {
+class CountryScreenState extends State<CountryScreen> {
   late Future<List<Country>> futureCountries;
 
   @override
@@ -24,18 +24,20 @@ class _CountryScreenState extends State<CountryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Negara di ${widget.continent}',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 20)),
+        title: Text(
+          'Negara di ${widget.continent}',
+          style: const TextStyle(fontFamily: 'Inter', fontSize: 20),
+        ),
       ),
       body: FutureBuilder<List<Country>>(
         future: futureCountries,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No Countries Found'));
+            return const Center(child: Text('No Countries Found'));
           }
 
           // Filter berdasarkan benua yang dipilih
@@ -60,27 +62,41 @@ class _CountryScreenState extends State<CountryScreen> {
           return ListView.builder(
             itemCount: countriesInContinent.length,
             itemBuilder: (context, index) {
+              final country = countriesInContinent[index];
               return Card(
+                margin:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
                 child: ListTile(
-                  leading: Container(
+                  leading: SizedBox(
                     width: 50,
                     height: 30,
                     child: Image.network(
-                      countriesInContinent[index].flagUrl,
+                      country.flagUrl,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  title: Text(countriesInContinent[index].name,
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                      )),
-                  subtitle:
-                      Text('Ibukota: ${countriesInContinent[index].capital}',
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 14,
-                          )),
+                  title: Text(
+                    country.name,
+                    style: const TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                    ),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Ibukota: ${country.capital}',
+                          style: const TextStyle(fontSize: 14)),
+                      Text('Populasi: ${country.population}',
+                          style: const TextStyle(fontSize: 14)),
+                      Text('Area: ${country.area} km²',
+                          style: const TextStyle(fontSize: 14)),
+                      Text('Bahasa: ${country.languages.join(', ')}',
+                          style: const TextStyle(fontSize: 14)),
+                      Text('Mata Uang: ${country.currency}',
+                          style: const TextStyle(fontSize: 14)),
+                    ],
+                  ),
                 ),
               );
             },
