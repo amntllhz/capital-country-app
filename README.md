@@ -10,7 +10,7 @@
 
 ###
 
-<p align="left">✨ Have a good UI appearance, don't be the same as each other<br><br>📑 Can perform routing or navigation between pages and send data<br><br>🗃️ Able to get data from the API <br><br>📦 Collected in rar or zip form With name format: nim_nama_uts.rar<br><br>📤 Collected in the exam application</p>
+<p align="left">✨ Have a good UI appearance, don't be the same as each other<br>📑 Can perform routing or navigation between pages and send data🗃️ Able to get data from the API <br>📦 Collected in rar or zip form With name format: nim_nama_uts.rar<br>📤 Collected in the exam application</p>
 
 ###
 
